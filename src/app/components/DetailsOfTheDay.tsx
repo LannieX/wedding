@@ -15,7 +15,6 @@ export const DetailsOfTheDay = () => {
       </div>
 
       <div className={`bg-white/60 backdrop-blur-md rounded-3xl overflow-hidden shadow-xl border border-white/40 transition-all duration-1000 delay-300 ${inView ? "animate__animated animate__fadeInUp" : "opacity-0"}`}>
-        
         <div className="w-full h-[300px] md:h-[450px] p-4 md:p-6">
           <img 
             src="/ring.jpg"

@@ -6,6 +6,7 @@ import { Countdown } from "./components/CountDown";
 import { Program } from "./components/ProgramDay";
 import { DetailsOfTheDay } from "./components/DetailsOfTheDay";
 import { ArrowUp, Star } from "lucide-react";
+import Theme from "./components/Theme";
 
 const Details = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -133,7 +134,8 @@ const Details = () => {
             <Countdown />
             <DetailsOfTheDay />
             <Program />
-            <div className="min-h-[200px] bg-[#825e28] flex flex-col gap-2 items-center justify-center p-10 mt-20 relative">
+            <Theme />
+            <div className="min-h-[200px] bg-[#825e28] flex flex-col gap-2 items-center justify-center p-10 relative">
               <button
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                 className="absolute top-10 flex flex-col items-center gap-1 text-gray-300 hover:text-white transition-all group"
@@ -168,8 +170,12 @@ const Details = () => {
           className={`flex-1 bg-[#dbc6af] border-b border-[#825e28] transition-transform duration-1000 ease-in-out ${open ? "-translate-y-full" : "translate-y-0"}`}
         />
         <div
-          className={`flex-1 bg-[#dbc6af] border-t border-[#825e28] transition-transform duration-1000 ease-in-out ${open ? "translate-y-full" : "translate-y-0"}`}
-        />
+          className={`flex-1 bg-[#dbc6af] flex items-start justify-center border-t border-[#825e28] transition-transform duration-1000 ease-in-out ${open ? "translate-y-full" : "translate-y-0"}`}
+        >
+          <p className="text-[#825e28] font-[family:var(--font-montserrat)] tracking-[0.2em] text-[14px] opacity-60 mt-33 ml-5">
+            CLICK TO OPEN...
+          </p>
+        </div>
       </div>
       {!open && (
         <div className="fixed inset-0 z-30 flex items-center justify-center">
@@ -178,7 +184,7 @@ const Details = () => {
             className="hover:scale-110 transition-transform duration-300 cursor-pointer"
           >
             <img
-              src="/sealz2.png"
+              src="/sealz.png"
               alt="Seal"
               className="w-[300px] h-[300px] object-contain"
             />
