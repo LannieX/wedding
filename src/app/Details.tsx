@@ -1,0 +1,202 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import confetti from "canvas-confetti";
+import { Countdown } from "./components/CountDown";
+import { Program } from "./components/ProgramDay";
+import { DetailsOfTheDay } from "./components/DetailsOfTheDay";
+import { ArrowUp, Star } from "lucide-react";
+
+const Details = () => {
+  const [open, setOpen] = useState<boolean>(false);
+
+  const events = [
+    {
+      time: "09:00",
+      title: "Wedding Ceremony",
+      description:
+        "We invite you to witness this momentous occasion, to record a new chapter in our lives as we begin our vows together.",
+      icon: "❤️",
+    },
+    {
+      time: "11:00",
+      title: "Eating",
+      description: "Dining is available until 6 pm.",
+      icon: "🍴",
+    },
+  ];
+
+  const targetDate = new Date("2026-05-30T00:00:00").getTime();
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  const fireConfetti = () => {
+    const scalar = 2;
+    const unicorn = confetti.shapeFromText({ text: "❤️", scalar });
+
+    const defaults = {
+      spread: 360,
+      ticks: 60,
+      gravity: 0,
+      decay: 0.96,
+      startVelocity: 20,
+      shapes: [unicorn],
+      scalar,
+    };
+
+    const shoot = () => {
+      confetti({ ...defaults, particleCount: 30 });
+      confetti({ ...defaults, particleCount: 5, flat: true });
+      confetti({
+        ...defaults,
+        particleCount: 15,
+        scalar: scalar / 2,
+        shapes: ["circle"],
+      });
+    };
+
+    shoot();
+    setTimeout(shoot, 100);
+    setTimeout(shoot, 200);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+    fireConfetti();
+  };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        clearInterval(timer);
+      } else {
+        setTimeLeft({
+          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+          hours: Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+          ),
+          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((distance % (1000 * 60)) / 1000),
+        });
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [targetDate]);
+
+  const timeUnits = [
+    { label: "DAYS", value: timeLeft.days },
+    { label: "HOURS", value: timeLeft.hours },
+    { label: "MINUTES", value: timeLeft.minutes },
+    { label: "SECONDS", value: timeLeft.seconds },
+  ];
+
+  return (
+    <div className="relative w-full min-h-screen overflow-x-hidden bg-[#dbc6af]">
+      <div className="absolute top-0 left-0 w-full h-screen">
+        <img
+          src="/bgz.png"
+          alt="Background"
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="relative z-10">
+        <div className="w-full h-screen flex flex-col items-center justify-center">
+          {open && (
+            <div className="relative flex flex-col items-center justify-between h-[70%] w-full py-10">
+              <div className="animate__animated animate__fadeInLeft flex flex-col items-center text-xl text-[#825e28] font-[family:var(--font-montserrat)] tracking-[0.2em]">
+                <p>WELCOME</p>
+                <p>TO THE WEDDING OF</p>
+              </div>
+              <div className="flex-1 flex items-center justify-center w-full overflow-hidden">
+                <img
+                  src="/namez.png"
+                  className="max-h-full object-contain animate__animated animate__zoomIn"
+                  alt="Names"
+                />
+              </div>
+              <p className="animate__animated animate__fadeInRight text-xl text-[#825e28] font-[family:var(--font-montserrat)] tracking-[0.1em]">
+                30.05.2026
+              </p>
+            </div>
+          )}
+        </div>
+        {open && (
+          <>
+            <Countdown />
+            <DetailsOfTheDay />
+            <Program />
+            <div className="min-h-[200px] bg-[#825e28] flex flex-col gap-2 items-center justify-center p-10 mt-20 relative">
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="absolute top-10 flex flex-col items-center gap-1 text-gray-300 hover:text-white transition-all group"
+              >
+                <ArrowUp
+                  size={16}
+                  className="group-hover:-translate-y-1 transition-transform"
+                />
+                <span className="text-[11px] tracking-[0.2em] font-medium font-[family:var(--font-montserrat)] uppercase">
+                  Back to Top
+                </span>
+              </button>
+              <img
+                src="/w.png"
+                className="w-auto h-[150px] object-contain mt-7"
+                alt="Bride & Groom Names"
+              />
+              <p className="text-[11px] text-gray-300 font-[family:var(--font-montserrat)] tracking-[0.2em] uppercase">
+                30 May 2026
+              </p>
+              <p className="text-[8px] text-gray-100/60 font-[family:var(--font-montserrat)] tracking-[0.2em] uppercase">
+                MADE BY MARUSLAMDEVZ
+              </p>
+            </div>
+          </>
+        )}
+      </div>
+      <div
+        className={`fixed inset-0 z-20 flex flex-col transition-all duration-1000 ${open ? "pointer-events-none opacity-0" : ""}`}
+      >
+        <div
+          className={`flex-1 bg-[#dbc6af] border-b border-[#825e28] transition-transform duration-1000 ease-in-out ${open ? "-translate-y-full" : "translate-y-0"}`}
+        />
+        <div
+          className={`flex-1 bg-[#dbc6af] border-t border-[#825e28] transition-transform duration-1000 ease-in-out ${open ? "translate-y-full" : "translate-y-0"}`}
+        />
+      </div>
+      {!open && (
+        <div className="fixed inset-0 z-30 flex items-center justify-center">
+          <button
+            onClick={handleOpen}
+            className="hover:scale-110 transition-transform duration-300 cursor-pointer"
+          >
+            <img
+              src="/sealz.png"
+              alt="Seal"
+              className="w-[300px] h-[300px] object-contain"
+            />
+          </button>
+        </div>
+      )}
+
+      {open && (
+        <div className="fixed inset-0 z-30 flex items-center justify-center pointer-events-none">
+          <img
+            src="/sealz.png"
+            className="w-[300px] h-[300px] object-contain animate__animated animate__fadeOut animate__slow"
+            alt="Seal Fading"
+          />
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Details;
