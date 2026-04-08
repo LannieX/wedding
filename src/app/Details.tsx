@@ -178,7 +178,7 @@ const Details = () => {
             className="hover:scale-110 transition-transform duration-300 cursor-pointer"
           >
             <img
-              src="/sealz.png"
+              src="/sealz2.png"
               alt="Seal"
               className="w-[300px] h-[300px] object-contain"
             />
