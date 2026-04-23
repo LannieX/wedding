@@ -5,29 +5,13 @@ import confetti from "canvas-confetti";
 import { Countdown } from "./components/CountDown";
 import { Program } from "./components/ProgramDay";
 import { DetailsOfTheDay } from "./components/DetailsOfTheDay";
-import { ArrowUp, Star } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import Theme from "./components/Theme";
 
 const Details = () => {
   const [open, setOpen] = useState<boolean>(false);
 
-  const events = [
-    {
-      time: "09:00",
-      title: "Wedding Ceremony",
-      description:
-        "We invite you to witness this momentous occasion, to record a new chapter in our lives as we begin our vows together.",
-      icon: "❤️",
-    },
-    {
-      time: "11:00",
-      title: "Eating",
-      description: "Dining is available until 6 pm.",
-      icon: "🍴",
-    },
-  ];
-
-  const targetDate = new Date("2026-05-30T00:00:00").getTime();
+  const targetDate = new Date("2026-08-27T00:00:00").getTime();
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -92,18 +76,11 @@ const Details = () => {
     return () => clearInterval(timer);
   }, [targetDate]);
 
-  const timeUnits = [
-    { label: "DAYS", value: timeLeft.days },
-    { label: "HOURS", value: timeLeft.hours },
-    { label: "MINUTES", value: timeLeft.minutes },
-    { label: "SECONDS", value: timeLeft.seconds },
-  ];
-
   return (
-    <div className="relative w-full min-h-screen overflow-x-hidden bg-[#dbc6af]">
+    <div className="relative w-full min-h-screen overflow-x-hidden bg-[#e4c5d9]">
       <div className="absolute top-0 left-0 w-full h-screen">
         <img
-          src="/bgz.png"
+          src="/bgx.png"
           alt="Background"
           className="w-full h-full object-cover"
         />
@@ -111,20 +88,25 @@ const Details = () => {
       <div className="relative z-10">
         <div className="w-full h-screen flex flex-col items-center justify-center">
           {open && (
-            <div className="relative flex flex-col items-center justify-between h-[70%] w-full py-10">
-              <div className="animate__animated animate__fadeInLeft flex flex-col items-center text-xl text-[#825e28] font-[family:var(--font-montserrat)] tracking-[0.2em]">
-                <p>WELCOME</p>
-                <p>TO THE WEDDING OF</p>
+            <div className="relative flex flex-col justify-between h-full w-full py-10">
+              <div className="animate__animated animate__backInDown absolute top-0 right-10 bg-[#b7789c] text-white  px-6 py-5 rounded-b-3xl text-[22px] flex flex-col items-center font-[family:var(--font-montserrat)] tracking-[0.3em]">
+                <span>27</span>
+                <span>08</span>
+                <span>26</span>
+              </div>
+              <div className="animate__animated animate__fadeInLeft flex flex-col items-start text-[16px] text-[#b7789c] font-[family:var(--font-montserrat)] tracking-[0.2em] self-start ml-5">
+                <p>PLEASE JOIN US FOR</p>
+                <p>THE WEDDING OF</p>
               </div>
               <div className="flex-1 flex items-center justify-center w-full overflow-hidden">
                 <img
-                  src="/namez.png"
+                  src="/namex.png"
                   className="max-h-full object-contain animate__animated animate__zoomIn"
                   alt="Names"
                 />
               </div>
-              <p className="animate__animated animate__fadeInRight text-xl text-[#825e28] font-[family:var(--font-montserrat)] tracking-[0.1em]">
-                30.05.2026
+              <p className="animate__animated animate__fadeInRight text-[16px] text-[#b7789c] font-[family:var(--font-montserrat)] tracking-[0.1em] self-end mr-5">
+                27 AUGUST 2026
               </p>
             </div>
           )}
@@ -135,7 +117,7 @@ const Details = () => {
             <DetailsOfTheDay />
             <Program />
             <Theme />
-            <div className="min-h-[200px] bg-[#825e28] flex flex-col gap-2 items-center justify-center p-10 relative">
+            <div className="min-h-[200px] bg-[#b7789c] flex flex-col gap-2 items-center justify-center p-10 relative">
               <button
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                 className="absolute top-10 flex flex-col items-center gap-1 text-gray-300 hover:text-white transition-all group"
@@ -149,12 +131,15 @@ const Details = () => {
                 </span>
               </button>
               <img
-                src="/w.png"
+                src="/x.png"
                 className="w-auto h-[150px] object-contain mt-7"
                 alt="Bride & Groom Names"
               />
-              <p className="text-[11px] text-gray-300 font-[family:var(--font-montserrat)] tracking-[0.2em] uppercase">
-                30 May 2026
+              <p className="text-[14px] text-gray-300 font-[family:var(--font-montserrat)] tracking-[0.2em] mt-[-20] uppercase">
+                AZMEE & SALMEE
+              </p>
+              <p className="text-[11px] text-gray-300 font-[family:var(--font-montserrat)] tracking-[0.2em] mt-5 uppercase">
+                27 August 2026
               </p>
               <p className="text-[8px] text-gray-100/60 font-[family:var(--font-montserrat)] tracking-[0.2em] uppercase">
                 MADE BY MARUSLAMDEVZ
@@ -167,12 +152,12 @@ const Details = () => {
         className={`fixed inset-0 z-20 flex flex-col transition-all duration-1000 ${open ? "pointer-events-none opacity-0" : ""}`}
       >
         <div
-          className={`flex-1 bg-[#dbc6af] border-b border-[#825e28] transition-transform duration-1000 ease-in-out ${open ? "-translate-y-full" : "translate-y-0"}`}
+          className={`flex-1 bg-[#e4c5d9] border-b border-[#b7789c] transition-transform duration-1000 ease-in-out ${open ? "-translate-y-full" : "translate-y-0"}`}
         />
         <div
-          className={`flex-1 bg-[#dbc6af] flex items-start justify-center border-t border-[#825e28] transition-transform duration-1000 ease-in-out ${open ? "translate-y-full" : "translate-y-0"}`}
+          className={`flex-1 bg-[#e4c5d9] flex items-start justify-center border-t border-[#b7789c] transition-transform duration-1000 ease-in-out ${open ? "translate-y-full" : "translate-y-0"}`}
         >
-          <p className="text-[#825e28] font-[family:var(--font-montserrat)] tracking-[0.2em] text-[14px] opacity-60 mt-33 ml-5">
+          <p className="text-[#b7789c] font-[family:var(--font-montserrat)] tracking-[0.2em] text-[14px] opacity-60 mt-36 ml-5">
             CLICK TO OPEN...
           </p>
         </div>
@@ -184,7 +169,7 @@ const Details = () => {
             className="hover:scale-110 transition-transform duration-300 cursor-pointer"
           >
             <img
-              src="/sealz.png"
+              src="/sealx.png"
               alt="Seal"
               className="w-[300px] h-[300px] object-contain"
             />
@@ -195,7 +180,7 @@ const Details = () => {
       {open && (
         <div className="fixed inset-0 z-30 flex items-center justify-center pointer-events-none">
           <img
-            src="/sealz.png"
+            src="/sealx.png"
             className="w-[300px] h-[300px] object-contain animate__animated animate__fadeOut animate__slow"
             alt="Seal Fading"
           />
