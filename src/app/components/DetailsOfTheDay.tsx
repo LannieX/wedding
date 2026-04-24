@@ -49,7 +49,7 @@ export const DetailsOfTheDay = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full mt-10">
             <a 
-              href="https://www.google.com/maps?q=6.4201110,101.5519720"
+              href="https://www.google.com/maps?q=6.368659,101.488278"
               target="_blank"
               className="flex items-center justify-center gap-2 bg-[#c272a0] hover:bg-[#cc649f] text-white py-4 px-6 rounded-full transition-all shadow-md group font-bold text-sm"
             >
