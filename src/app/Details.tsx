@@ -94,7 +94,7 @@ const Details = () => {
                 <span>08</span>
                 <span>26</span>
               </div>
-              <div className="animate__animated animate__fadeInLeft flex flex-col items-start text-[16px] text-[#b7789c] font-[family:var(--font-montserrat)] tracking-[0.2em] self-start ml-5">
+              <div className="animate__animated animate__fadeInLeft flex flex-col items-start text-[16px] text-[#b7789c] font-[family:var(--font-montserrat)] tracking-[0.2em] self-start ml-5 mt-1">
                 <p>PLEASE JOIN US FOR</p>
                 <p>THE WEDDING OF</p>
               </div>
@@ -105,7 +105,7 @@ const Details = () => {
                   alt="Names"
                 />
               </div>
-              <p className="animate__animated animate__fadeInRight text-[16px] text-[#b7789c] font-[family:var(--font-montserrat)] tracking-[0.1em] self-end mr-5">
+              <p className="animate__animated animate__fadeInRight text-[16px] text-[#b7789c] font-[family:var(--font-montserrat)] tracking-[0.1em] self-end mr-5 mb-10">
                 27 AUGUST 2026
               </p>
             </div>
