@@ -105,7 +105,7 @@ const Details = () => {
                   alt="Names"
                 />
               </div>
-              <p className="animate__animated animate__fadeInRight text-[16px] text-[#b7789c] font-[family:var(--font-montserrat)] tracking-[0.1em] self-end mr-5 mb-10">
+              <p className="animate__animated animate__fadeInRight text-[16px] text-[#b7789c] font-[family:var(--font-montserrat)] tracking-[0.1em] self-end mr-5 mb-30">
                 27 AUGUST 2026
               </p>
             </div>
