@@ -100,7 +100,7 @@ const Details = () => {
               </div>
               <div className="flex-1 flex items-center justify-center w-full overflow-hidden">
                 <img
-                  src="/namex.png"
+                  src="/namex2.png"
                   className="max-h-full object-contain animate__animated animate__zoomIn"
                   alt="Names"
                 />
