@@ -1,15 +1,22 @@
-import React from "react";
+import { useInView } from "react-intersection-observer";
 
 const Theme = () => {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
   return (
-    <div className="flex flex-col items-center justify-center gap-2 tracking-widest uppercase bg-gray-100 h-fit w-full pt-5 pb-5">
-      <div className="w-full flex flex-row items-center justify-center gap-2">
-        <div className="bg-[#dbc6af] w-4 h-4 rounded-full" />
-        <div className="bg-[#aa6b47] w-4 h-4 rounded-full" />
-        <div className="bg-[#8c866e] w-4 h-4 rounded-full" />
-        <div className="bg-[#e2c4c4] w-4 h-4 rounded-full" />
+    <div ref={ref} className="flex flex-col items-center justify-center gap-5 tracking-widest uppercase bg-gray-100 h-fit w-full pt-5 pb-5">
+      <div className={`w-full flex flex-row items-center justify-center gap-1 ${inView ? "animate__animated animate__fadeInDown" : "opacity-0"}`}>
+        <div className="bg-[#481024] w-5 h-5 rounded-full" />
+        <div className="bg-[#a29d33] w-5 h-5 rounded-full" />
+        <div className="bg-[#f2e5b6] w-5 h-5 rounded-full" />
+        <div className="bg-[#ca788e] w-5 h-5 rounded-full" />
+        <div className="bg-[#94aac8] w-5 h-5 rounded-full" />
       </div>
-      <p className="text-[16px] text-[#825e28]">WEDDING COLOR</p>
+      <p className="text-[15px] text-[#66261d] font-thai">
+        คอลเลกชันธีมงานแต่ง
+      </p>
     </div>
   );
 };

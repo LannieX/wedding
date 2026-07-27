@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Montserrat } from "next/font/google";
+import { Geist, Geist_Mono, Kanit, Montserrat } from "next/font/google";
 import "./globals.css";
 import 'animate.css';
 
@@ -19,8 +19,14 @@ const montserrat = Montserrat({
   weight: ["400", "700", "900"],
 });
 
+const kanit = Kanit({
+  variable: "--font-kanit",
+  subsets: ["thai", "latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
 export const metadata: Metadata = {
-  title: "Maruslam & Tasneem Wedding",
+  title: "HAFIZ & KAOSAR Wedding",
   description: "Save the date",
 };
 
@@ -32,7 +38,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${kanit.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

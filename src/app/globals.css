@@ -3,6 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --font-heading: var(--font-montserrat);
+  --font-thai: var(--font-kanit);
 }
 
 @theme inline {
@@ -10,6 +13,9 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --font-heading: var(--font-heading);
+  --font-thai: var(--font-thai);
 }
 
 @media (prefers-color-scheme: dark) {
