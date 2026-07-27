@@ -19,7 +19,6 @@ export default function ImageMarquee({
       direction={direction}
       speed={speed}
       gradient={false}
-      pauseOnHover
       autoFill
     >
       {images.map((image, index) => (
